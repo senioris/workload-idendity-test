@@ -1,0 +1,27 @@
+name: test
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - id: 'auth'
+        name: 'Authenticate to Google Cloud'
+        uses: 'google-github-actions/auth@v2'
+        with:
+          workload_identity_provider: 'projects/38617274160/locations/global/workloadIdentityPools/test/providers/github'
+          service_account: 'github@ageless-domain-442510-j3.iam.gserviceaccount.com'
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v2'
+        with:
+          version: '>= 363.0.0'
+      - name: 'Upload test file'
+        run: 'echo "test" > test.txt && gsutil cp test.txt gs://github-9471834'
