@@ -5,7 +5,7 @@ terraform {
       version = "~> 6.8.0"
     }
   }
-  required_version = "~> 1.9.7"
+  required_version = ">= 1.9.7"
 
   backend "gcs" {
     bucket                      = "terrafom-backend-idyllic-aspect-442902-h0"
