@@ -18,7 +18,7 @@ jobs:
         uses: 'google-github-actions/auth@v2'
         with:
           workload_identity_provider: 'projects/38617274160/locations/global/workloadIdentityPools/test/providers/github'
-          service_account: 'github@idyllic-aspect-442902-h0.iam.gserviceaccount.com'
+          service_account: 'github@ageless-domain-442510-j3.iam.gserviceaccount.com'
       - uses: hashicorp/setup-terraform@v2
       - name: Terraform Init
         id: init
