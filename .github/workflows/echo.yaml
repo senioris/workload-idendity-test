@@ -1,11 +1,11 @@
-name: Generate terraform docs
-on:
-  - push
+# name: Generate terraform docs
+# on:
+#   - push
 
-jobs:
-  docs:
-    runs-on: ubuntu-latest
-    steps:
-    - name: echo
-      run: |
-        echo 'change-dir' ${{ matrix.changed_dir }}
+# jobs:
+#   docs:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: echo
+#       run: |
+#         echo 'change-dir' ${{ matrix.changed_dir }}

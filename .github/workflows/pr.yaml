@@ -1,19 +1,25 @@
-# name: Generate terraform docs
-# on:
-#   - push
-
-# jobs:
-#   docs:
-#     runs-on: ubuntu-latest
-#     steps:
-#     - uses: actions/checkout@v3
-#       with:
-#         ref: ${{ github.head.ref }}
-
-#     - name: Render terraform docs and push changes back to PR
-#       uses: terraform-docs/gh-actions@main
-#       with:
-#         find-dir: .
-#         output-file: README.md
-#         output-method: inject
-#         git-push: "true"
+name: test
+on:
+  workflow_dispatch:
+  pull_request:
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - id: 'auth'
+        name: 'Authenticate to Google Cloud'
+        uses: 'google-github-actions/auth@v2'
+        with:
+          workload_identity_provider: 'projects/38617274160/locations/global/workloadIdentityPools/test/providers/github'
+          service_account: 'github@idyllic-aspect-442902-h0.iam.gserviceaccount.com'
+      - uses: hashicorp/setup-terraform@v2
+      - name: Terraform Init
+        id: init
+        run: terraform init
+      - name: Terraform plan
+        run: terraform plan 
