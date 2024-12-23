@@ -1,6 +1,6 @@
 name: Generate terraform docs
 on:
-  - pull_request
+  - push
 
 jobs:
   docs:
@@ -16,7 +16,4 @@ jobs:
         find-dir: .
         output-file: README.md
         output-method: inject
-    - uses: stefanzweifel/git-auto-commit-action@v5
-      with:
-        commit_message: Automated Change
-        branch: ${{ github.head.ref }}
+        git-push: "true"
