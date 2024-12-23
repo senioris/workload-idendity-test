@@ -8,4 +8,4 @@ jobs:
     steps:
     - name: echo
       run: |
-        echo 'change-dir' ${{ github.head_ref }}
+        echo 'change-dir' ${{ github.ref }}
