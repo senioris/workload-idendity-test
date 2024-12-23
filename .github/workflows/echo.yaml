@@ -8,4 +8,4 @@ jobs:
     steps:
     - name: echo
       run: |
-        echo 'change-dir' ${{ matrix.changed_dir }}
+        echo 'change-dir' ${{ github.head_ref }}
