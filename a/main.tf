@@ -40,7 +40,7 @@ provider "google" {
 }
 
 resource "google_storage_bucket" "default" {
-  name                        = "terraform-cross-project-test-2138401367093"
+  name                        = "terraform-cross-project-test-aaa-2138401367093"
   location                    = "asia-northeast1"
   force_destroy               = true
   uniform_bucket_level_access = true

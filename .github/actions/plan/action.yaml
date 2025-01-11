@@ -1,0 +1,11 @@
+name: "plan"
+
+runs:
+  using: "composite"
+  steps:
+      - name: Setup terraform
+        uses: hashicorp/setup-terraform@v2
+      - name: Terraform Init
+        run: terraform init
+      - name: Terraform plan
+        run: terraform plan
