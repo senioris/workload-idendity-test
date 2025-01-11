@@ -4,6 +4,7 @@ runs:
   using: "composite"
   steps:
       - name: check
+        shell: bash
         run: pwd
       - name: Setup terraform
         uses: hashicorp/setup-terraform@v2
