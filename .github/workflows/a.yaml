@@ -8,15 +8,6 @@ on:
       - 'a/**'
 
 jobs:
-  common:
-    runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      contents: read
-    steps:
-      - name: checkout
-        uses: actions/checkout@v3
-      - uses: ./.github/actions/auth
   plan:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
@@ -24,8 +15,13 @@ jobs:
       id-token: write
       contents: read
     steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - uses: ./.github/actions/auth    
       - name: Change directory
-        run: cd a
+        run: |
+          pwd
+          cd a
       - uses: ./.github/actions/plan
 
 
@@ -36,6 +32,9 @@ jobs:
       id-token: write
       contents: read
     steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - uses: ./.github/actions/auth
       - name: Change directory
         run: cd a
       - uses: ./.github/actions/deploy
