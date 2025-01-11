@@ -8,15 +8,11 @@ runs:
   steps:
       - name: Setup terraform
         uses: hashicorp/setup-terraform@v2
-      - name: Change directory
-        shell: bash
-        run: cd ${{ inputs.directory }}
-      - name: check
-        shell: bash
-        run: pwd
       - name: Terraform Init
+        working-directory: ${{ inputs.directory }}
         shell: bash
         run: terraform init
       - name: Terraform plan
+        working-directory: ${{ inputs.directory }}
         shell: bash
         run: terraform plan
