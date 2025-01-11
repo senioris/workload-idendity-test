@@ -9,3 +9,10 @@ runs:
         with:
           workload_identity_provider: 'projects/38617274160/locations/global/workloadIdentityPools/test/providers/github'
           service_account: 'github@idyllic-aspect-442902-h0.iam.gserviceaccount.com'
+      - run: |
+          echo '1' $GITHUB_REF
+          echo '2' ${{ github.ref }}
+          echo '3' ${{ github.ref_name }}
+          echo '4' ${{ github.head_ref }}
+          echo '5' ${{ github.base_ref }}
+        shell: bash
