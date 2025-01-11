@@ -17,4 +17,4 @@ runs:
       - name: Terraform Apply
         working-directory: ${{ inputs.directory }}
         shell: bash
-        run: terraform apply
+        run: terraform apply -auto-approve
