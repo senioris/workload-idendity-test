@@ -8,7 +8,9 @@ runs:
         
       - name: Terraform Init
         id: init
+        shell: bash
         run: terraform init
 
       - name: Terraform Apply
+        shell: bash
         run: terraform apply
