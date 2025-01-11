@@ -2,10 +2,10 @@ name: test
 on:
   pull_request:
     paths:
-      - 'b/**'
+      - 'a/**'
   push:
     paths:
-      - 'b/**'
+      - 'a/**'
 
 jobs:
   plan:
@@ -20,7 +20,7 @@ jobs:
       - uses: ./.github/actions/auth
       - uses: ./.github/actions/plan
         with:
-          directory: 'b'
+          directory: 'a'
 
 
   deploy:
@@ -37,4 +37,4 @@ jobs:
         run: cd a
       - uses: ./.github/actions/deploy
         with:
-          directory: 'b'
+          directory: 'a'
