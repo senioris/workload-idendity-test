@@ -17,12 +17,10 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v3
-      - uses: ./.github/actions/auth    
-      - name: Change directory
-        run: |
-          pwd
-          cd a
+      - uses: ./.github/actions/auth
       - uses: ./.github/actions/plan
+      with:
+        directory: 'a'
 
 
   deploy:
@@ -38,3 +36,5 @@ jobs:
       - name: Change directory
         run: cd a
       - uses: ./.github/actions/deploy
+        with:
+          directory: 'a'

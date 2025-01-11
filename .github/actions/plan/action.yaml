@@ -1,13 +1,18 @@
 name: "plan"
-
+inputs:
+  directory: 'The target directory to plan'
+  required: true
 runs:
   using: "composite"
   steps:
+      - name: Setup terraform
+        uses: hashicorp/setup-terraform@v2
+      - name: Change directory
+        shell: bash
+        run: cd ${{ inputs.directory }}
       - name: check
         shell: bash
         run: pwd
-      - name: Setup terraform
-        uses: hashicorp/setup-terraform@v2
       - name: Terraform Init
         shell: bash
         run: terraform init
