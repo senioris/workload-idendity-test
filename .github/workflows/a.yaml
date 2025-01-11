@@ -1,0 +1,40 @@
+name: a
+on:
+  pull_request:
+    paths:
+      - 'b/**'
+  push:
+    paths:
+      - 'b/**'
+
+jobs:
+  plan:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - uses: ./.github/actions/auth
+      - uses: ./.github/actions/plan
+        with:
+          directory: 'b'
+
+
+  deploy:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - uses: ./.github/actions/auth
+      - name: Change directory
+        run: cd a
+      - uses: ./.github/actions/deploy
+        with:
+          directory: 'b'

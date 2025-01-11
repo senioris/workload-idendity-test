@@ -1,0 +1,20 @@
+name: "deploy"
+inputs:
+  directory:
+    description: 'The target directory to deploy'
+    required: true
+runs:
+  using: "composite"
+  steps:
+      - name: Setup terraform
+        uses: hashicorp/setup-terraform@v2
+      - name: Terraform Init
+        id: init
+        working-directory: ${{ inputs.directory }}
+        shell: bash
+        run: terraform init
+
+      - name: Terraform Apply
+        working-directory: ${{ inputs.directory }}
+        shell: bash
+        run: terraform apply
