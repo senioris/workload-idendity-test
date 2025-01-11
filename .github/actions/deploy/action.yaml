@@ -1,7 +1,8 @@
 name: "deploy"
 inputs:
-  directory: 'The target directory to deploy'
-  required: true
+  directory:
+    description: 'The target directory to deploy'
+    required: true
 runs:
   using: "composite"
   steps:

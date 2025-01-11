@@ -1,7 +1,8 @@
 name: "plan"
 inputs:
-  directory: 'The target directory to plan'
-  required: true
+  directory:
+    description: 'The target directory to plan'
+    required: true
 runs:
   using: "composite"
   steps:
