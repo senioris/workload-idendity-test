@@ -1,5 +1,4 @@
 name: a
-description: 'a directory'
 on:
   pull_request:
     paths:
