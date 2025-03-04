@@ -1,4 +1,5 @@
 name: "deploy"
+description: "This action authenticates to Google Cloud using workload identity."
 inputs:
   directory:
     description: 'The target directory to deploy'
